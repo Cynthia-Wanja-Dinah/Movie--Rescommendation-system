@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/movie.jpg') }}" );
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .wrapper{
+            overflow: hidden;
+            max-width: 390px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+          }
+          .form-inner form .field{
+            height: 50px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-inner form .field input{
+            height: 100%;
+            width: 100%;
+            outline: none;
+            padding-left: 15px;
+            border-radius: 15px;
+            border: 1px solid lightgrey;
+            border-bottom-width: 2px;
+            font-size: 17px;
+            transition: all 0.3s ease;
+          }
+          .form-inner form .pass-link{
+            margin-top: 5px;
+          }
+
+
+        form {
+            background-color: #fef1f1;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: 80vh;
+            
+        }
+
+        form input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-inner">
+    <form method="POST" action="{{ url_for('register') }}" style="margin-left: 20px;">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Your Logo" class="logo-inside" style="max-width: 100px; height: auto; border-radius: 50%;">
+        <div class="msg">{{ msg }}</div>
+        <h2>Register</h2>
+        <div class="field">
+        <input type="username" name="username" placeholder="username" autocomplete="off" required>
+    </div>
+        <br>
+        <div class="field">
+        <input type="password" name="password" placeholder="Password" autocomplete="off" required>
+    </div>
+    <br>
+    <div class="field">
+        <input type="email" name="email" placeholder="email" autocomplete="off" required>
+    </div>
+        <br>
+        <button type="submit">Register</button>
+        <p>Already have an account? <a href="{{url_for('login')}}">Login here</a></p>
+    </div>
+</div>
+
+    </form>
+
+   
+</body>
+</html>

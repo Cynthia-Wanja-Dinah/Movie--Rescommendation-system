@@ -1,0 +1,171 @@
+<!-- recommendations.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Movies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        body {
+            background: #D9F799;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* spacing between elements */
+            justify-items: center; /* center-align items */
+        }
+        .move h3 {
+            grid-column: 1 / -1; /* span across all columns */
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+        .back-link {
+            text-decoration: none;
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: white;
+            background-color: black;
+        }
+        .star {
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body  style="background:#D9F799">
+    <a href="{{ url_for('index') }}" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back 
+    </a>
+    <div>
+        <h3>{{ movie_names[0] }}</h3>
+        <img src="{{ movie_posters[0] }}" alt="{{ movie_names[0] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[0] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+    <div>
+        <h3>{{ movie_names[1] }}</h3>
+        <img src="{{ movie_posters[1] }}" alt="{{ movie_names[1] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[1] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+    </div>
+    <div>
+        <h3>{{ movie_names[2] }}</h3>
+        <img src="{{ movie_posters[2] }}" alt="{{ movie_names[2] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[2] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+    </div>
+    <div>
+        <h3>{{ movie_names[3] }}</h3>
+        <img src="{{ movie_posters[3] }}" alt="{{ movie_names[3] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[3] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+    <div>
+        <h3>{{ movie_names[4] }}</h3>
+        <img src="{{ movie_posters[4] }}" alt="{{ movie_names[4] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[4] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+    <div>
+        <h3>{{ movie_names[5] }}</h3>
+        <img src="{{ movie_posters[5] }}" alt="{{ movie_names[5] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[5] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+    </div>
+    <div>
+        <h3>{{ movie_names[6] }}</h3>
+        <img src="{{ movie_posters[6] }}" alt="{{ movie_names[6] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[6] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+    </div>
+    <div>
+        <h3>{{ movie_names[7] }}</h3>
+        <img src="{{ movie_posters[7] }}" alt="{{ movie_names[7] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[7] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+    </div>
+    <div>
+        <h3>{{ movie_names[8] }}</h3>
+        <img src="{{ movie_posters[8] }}" alt="{{ movie_names[8] }}" style="max-width: 400px; max-height: 400px;">
+        <div class="rating" data-movie="{{ movie_names[8] }}">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+       
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.rating .star');
+        
+            stars.forEach(function(star) {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(star.getAttribute('data-value'));
+                    const movieName = star.parentElement.getAttribute('data-movie');
+                    alert(`You rated "${movieName}" ${rating} stars.`);
+                    // Here you can send the rating data to the server or do any other processing
+                });
+            });
+        });
+        </script>
+
+  
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+           background-image: url("{{ url_for('static', filename='images/netflix.jpg') }}" ); 
+            background-position: center;
+            background-size: cover;
+            filter:brightness(100%);            
+        }  
+        form {
+            text-align: center;
+        }
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .move{
+            /*background: #D9F799;*/
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* spacing between elements */
+            justify-items: center; /* center-align items */
+            width: 30%; /* Set the width of each movie element */
+            margin-bottom: 30px; /* Adjust spacing between rows */
+        }
+       
+        @media (max-width: 1024px) {
+            .move {
+                width: 48%; /* Adjust for smaller screens, two movies per row */
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .move {
+                width: 100%; /* On smaller screens, one movie per row */
+            }
+        }
+
+        h2 {
+            grid-column: 1 / -1; /* span across all columns */
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+        .back-link {
+            text-decoration: none;
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: white;
+            background-color: black;
+        }
+        /* static/styles.css */
+      /* static/styles.css */
+#userIconContainer img {
+    position: fixed;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+}
+
+#userIconContainer img {
+    border-radius: 50%; /* Make the image round */
+    width: 40px; /* Set the width of the image */
+    height: 40px; /* Set the height of the image */
+}      
+
+header {
+    background-color: #b6b1b1; /* Adjust as needed */
+    color: #1e0d0d; /* Adjust text color as needed */
+    padding: 10px;
+    text-align: left;
+    height: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+}
+#userIconContainer {
+    position: relative;
+    cursor: pointer;
+}
+
+#userIconContainer {
+    display: inline-block;
+    margin-right: 10px; /* Adjust as needed */
+}
+
+#userIcon {
+    position: relative;
+    cursor: pointer;
+}
+
+#dropdownContent {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #333; /* Adjust as needed */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#dropdownContent a {
+    color: #fff; /* Adjust text color as needed */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#dropdownContent a:hover {
+    background-color: #555; /* Adjust as needed */
+}
+
+
+    </style>
+
+</head>
+<body >
+    <header>
+
+            <nav >
+                <a href="/home" class="mr-5 hover:text-gray-900">Home</a>
+                <a href="/index" class="mr-5 hover:text-gray-900">Recommendation</a>
+             
+            <div id="userIconContainer">
+                <div id="userIcon" onclick="toggleDropdown()">
+                    {% if user_authenticated %}
+                    <span  style="color:#8d0404; font-weight:bold;">  {{ username }}   <img src="{{ url_for('static', filename='images/windows.jpg') }}" alt="Default User Icon"  style="width: 25px; height: auto;"></span>
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/windows.jpg') }}" alt="Default User Icon">
+                    {% endif %}
+                    <div id="dropdownContent">
+                        {% if user_authenticated %}
+                            <a href="#" onclick="logout()">Logout</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+</header>
+
+
+    <h1 style="color:rgba(247, 245, 245, 0.879); margin-left:350px; font-size:50px; margin-top:100px">Movie Recommender System </h1>
+
+    <form method="post">
+        <select name="movie">
+            {% for movie in movie_list %}
+                <option value="{{ movie }}">{{ movie }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show Recommendation" style="color: rgba(247, 245, 245, 0.879);">
+    </form>
+    <br>
+    <br>
+    
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    
+</body>
+</html>
